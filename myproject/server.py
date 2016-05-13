@@ -14,17 +14,17 @@ BOTTOM = "<div class='botton'>Middleware BOTTOM</div>"
 
 def index_html(environ, start_response):
     file = open('./index.html', 'r')
-	data = file.read()
-	file.close()
+    data = file.read()
+    file.close()
 	
-	return Response(data)
+    return Response(data)
 
 def aboutme_html(environ, start_response):
     file = open('./about/aboutme.html', 'r')
-	data = file.read()
-	file.close()
+    data = file.read()
+    file.close()
 	
-	return Response(data)
+    return Response(data)
 
 
 MIDDLEWARE_TOP = "<div class='top'>Middleware TOP</div>"
@@ -36,8 +36,8 @@ if __name__ == '__main__':
     config.add_route('ind1', '/')
     config.add_route('ind2', '/index.html')
     config.add_route('about', '/about/aboutme.html')
-	config.add_view(index_html, route_name='ind1')
-	config.add_view(index_html, route_name='ind2')
+    config.add_view(index_html, route_name='ind1')
+    config.add_view(index_html, route_name='ind2')
     config.add_view(aboutme_html, route_name='about')
     app = config.make_wsgi_app()
     MWApp = MiddleWare(app)
